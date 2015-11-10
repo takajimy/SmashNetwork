@@ -1,0 +1,301 @@
+﻿/* GENERAL LAYOUT*/
+html, body {
+    background-color: #284C7F;
+    height: 100%;
+    color: #FCF8FE;
+}
+
+.brows-footer {
+    text-align: center;
+    border-top: 1px solid #e5e5e5;
+    color: #FCF8FE;
+    padding: 10px 0;
+}
+
+.brows-cover {
+    height: 100%;
+    margin: 0 auto;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    padding-top: 70px;
+    padding-bottom: 50px;
+    vertical-align: central;
+}
+
+.vertical-center {
+  min-height: 100%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 100vh; /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
+}
+
+/* COLORS */
+.site-wrap {
+    padding-top: 70px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+.site-contents {
+    background-color: #7E98BC;
+    padding-top: 70px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+}
+
+a {
+    color: #c0fef6
+}
+
+.table-striped>tbody>tr:nth-child(odd)>td, 
+.table-striped>tbody>tr:nth-child(odd)>th {
+   background-color: #66BFEA;
+ }
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: #3D738C;
+}
+
+.navbar-nav {
+    font-size: large;
+}
+
+/* LOGIN PAGE*/
+.login {
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    padding-top: 70px;
+    padding-bottom: 50px;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+
+/* JUMBOTRON*/
+.jumbotron {
+    background-color: #B0B6BF;
+    text-align: center;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+/* CAROUSEL */
+.carousel {
+  height: 100%;
+  margin-bottom: 60px;
+}
+
+.carousel-caption {
+  z-index: 10;
+}
+
+.carousel .item {
+  height: 100%;
+  background-color: #284C7F;
+}
+
+.carousel-inner > .item > img {
+  position:inherit;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 100%;
+}
+
+.browsit-logo {
+    background: url('~/Images/logo9-9.png') no-repeat center right; 
+    display: block; 
+    height:84px; 
+    width:585px;
+}
+
+.navbar-brand {
+    background-image: url(~/Images/logo9-9.png);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Globals
+ */
+
+/* Links */
+/*a,
+a:focus,
+a:hover {
+  color: #fff;
+}*/
+
+/* Custom default button */
+/*.btn-default,
+.btn-default:hover,
+.btn-default:focus {
+  color: #333;
+  text-shadow: none; /* Prevent inheritence from `body` */
+  /*background-color: #fff;
+  border: 1px solid #fff;
+}*/
+
+
+/*
+ * Base structure
+ */
+
+/*html,
+body {
+  height: 100%;
+  background-color: #333;
+}
+body {
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}*/
+
+/* Extra markup and styles for table-esque vertical and horizontal centering */
+.site-wrapper {
+  text-align: center;
+  display: table;
+  width: 100%;
+  height: 100%; /* For at least Firefox */
+  min-height: 100%;
+  -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+          box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+.site-wrapper-inner {
+  display: table-cell;
+  vertical-align: top;
+}
+.cover-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+/* Padding for spacing */
+.inner {
+  padding: 30px;
+}
+
+
+/*
+ * Header
+ */
+.masthead-brand {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.masthead-nav > li {
+  display: inline-block;
+}
+.masthead-nav > li + li {
+  margin-left: 20px;
+}
+.masthead-nav > li > a {
+  padding-right: 0;
+  padding-left: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff; /* IE8 proofing */
+  color: rgba(255,255,255,.75);
+  border-bottom: 2px solid transparent;
+}
+.masthead-nav > li > a:hover,
+.masthead-nav > li > a:focus {
+  background-color: transparent;
+  border-bottom-color: #a9a9a9;
+  border-bottom-color: rgba(255,255,255,.25);
+}
+.masthead-nav > .active > a,
+.masthead-nav > .active > a:hover,
+.masthead-nav > .active > a:focus {
+  color: #fff;
+  border-bottom-color: #fff;
+}
+
+@media (min-width: 768px) {
+  .masthead-brand {
+    float: left;
+  }
+  .masthead-nav {
+    float: right;
+  }
+}
+
+
+/*
+ * Cover
+ */
+
+.cover {
+  padding: 0 20px;
+}
+.cover .btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+
+/*
+ * Footer
+ */
+
+.mastfoot {
+  color: #999; /* IE8 proofing */
+  color: rgba(255,255,255,.5);
+}
+
+
+/*
+ * Affix and center
+ */
+
+@media (min-width: 768px) {
+  /* Pull out the header and footer */
+  .masthead {
+    position: fixed;
+    top: 0;
+  }
+  .mastfoot {
+    position: fixed;
+    bottom: 0;
+  }
+  /* Start the vertical centering */
+  .site-wrapper-inner {
+    vertical-align: middle;
+  }
+  /* Handle the widths */
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 100%; /* Must be percentage or pixels for horizontal alignment */
+  }
+}
+
+@media (min-width: 992px) {
+  .masthead,
+  .mastfoot,
+  .cover-container {
+    width: 800px;
+  }
+}

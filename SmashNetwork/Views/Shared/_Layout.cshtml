@@ -1,0 +1,22 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    <!-- BOOTSTRAP -->
+    @Styles.Render("~/css")
+    @Scripts.Render("~/js")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jqueryval")
+</head>
+<body>
+    @Html.Partial("_AppbarPartial")
+    @Html.Partial("_TabbarPartial")
+    @RenderBody()
+    @Html.Partial("_FooterPartial")
+</body>
+</html>

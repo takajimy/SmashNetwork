@@ -1,0 +1,46 @@
+﻿body {
+    background-color: #284C7F;
+    height: 100%;
+    color: #FCF8FE;
+    text-align: center;
+    display: table;
+    width: 100%;
+    height: 100%; /* For at least Firefox */
+    min-height: 100%;
+    -webkit-box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+    box-shadow: inset 0 0 100px rgba(0,0,0,.5);
+}
+
+.appbar {
+    font-size: 16px;
+}
+
+/*.tabbar {
+    font-size: 20px;
+    display: block;
+}
+    
+    .tabbar > nav {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+        display: block;
+    }
+
+    .tabbar > nav > ul {
+        border-bottom: 1px solid #dddddd;
+        display: block;
+    }
+
+    .tabbar > nav > ul > li {
+        float: left;
+        margin-bottom: -1px;
+        display: block;
+    }
+
+    .tabbar > nav > ul > li > a {
+        position: relative;
+        display: block;
+        padding: 10px 15px;
+    }*/
+
