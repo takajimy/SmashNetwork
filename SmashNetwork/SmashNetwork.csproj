@@ -182,8 +182,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Blog\BlogAreaRegistration.cs" />
+    <Compile Include="Areas\Blog\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Feed\Controllers\FeedController.cs" />
     <Compile Include="Areas\Feed\FeedAreaRegistration.cs" />
+    <Compile Include="Areas\Regions\Controllers\RegionsController.cs" />
     <Compile Include="Areas\Regions\RegionsAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Controllers\UsersController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -270,6 +274,10 @@
     <Content Include="Areas\Feed\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Regions\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Blog\Views\Blog\Index.cshtml" />
+    <Content Include="Areas\Feed\Views\Feed\Index.cshtml" />
+    <Content Include="Areas\Regions\Views\Regions\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Users\Index.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
@@ -330,16 +338,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Blog\Controllers\" />
     <Folder Include="Areas\Blog\Models\" />
     <Folder Include="Areas\Blog\Views\Shared\" />
-    <Folder Include="Areas\Feed\Controllers\" />
     <Folder Include="Areas\Feed\Models\" />
     <Folder Include="Areas\Feed\Views\Shared\" />
-    <Folder Include="Areas\Regions\Controllers\" />
     <Folder Include="Areas\Regions\Models\" />
     <Folder Include="Areas\Regions\Views\Shared\" />
-    <Folder Include="Areas\Users\Controllers\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Areas\Users\Views\Shared\" />
   </ItemGroup>
