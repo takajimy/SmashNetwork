@@ -24,7 +24,8 @@ namespace SmashNetwork
                         "~/Scripts/modernizr-*"));
 
             bundles.Add(new StyleBundle("~/css")
-                        .Include("~/Content/bootstrap.css", "~/Content/bootstrap-theme.css"));
+                        .Include("~/Content/bootstrap.css", "~/Content/bootstrap-theme.css")
+                        .Include("~/Content/smashnetwork.css"));
 
             bundles.Add(new ScriptBundle("~/js")
                         .Include("~/Scripts/jquery-{version}.js")

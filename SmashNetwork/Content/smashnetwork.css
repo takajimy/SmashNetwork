@@ -1,6 +1,6 @@
 ﻿/* GENERAL LAYOUT*/
 html, body {
-    background-color: #284C7F;
+    background-color: #003333;
     height: 100%;
     color: #FCF8FE;
 }
@@ -32,7 +32,6 @@ html, body {
 
 /* COLORS */
 .site-wrap {
-    padding-top: 70px;
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 5%;
