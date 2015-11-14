@@ -1,0 +1,12 @@
+{
+  "name": "SmashNetworkPolymer",
+  "description": "Bower init file for SmashNetworkPolymer",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "homepage": "",
+  "dependencies": {
+    "polymer": "Polymer/polymer#1.2.0"
+  }
+}
