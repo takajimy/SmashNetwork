@@ -2,11 +2,20 @@
     background-color: #e2e2e2;
     margin: 0;
     padding: 0;
+    height: 100%;
+    width: 100%;
 }
 
 body {
     background-color: #fff;
-    border-top: solid 10px #000;
+    /*background-image: url("../Images/test-background.jpg");*/
+    /*border-top: solid 10px #000;*/
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-top: 0;
+    width: 100%;
+    height: 100%;
     color: #333;
     font-size: .85em;
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;

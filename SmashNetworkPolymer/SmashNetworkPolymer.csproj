@@ -20,6 +20,13 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <MvcProjectUpgradeChecked>true</MvcProjectUpgradeChecked>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>12.0</OldToolsVersion>
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -248,6 +255,7 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\test-background.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -608,6 +616,9 @@
     <Content Include="Scripts\Polymer\core-transition\core-transition.html" />
     <Content Include="Scripts\Polymer\core-transition\demo.html" />
     <Content Include="Scripts\Polymer\core-transition\index.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-panel.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-navigator.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-toolbar.html" />
     <Content Include="Scripts\Polymer\font-roboto\roboto.html" />
     <Content Include="Scripts\Polymer\google-code-prettify\bin\prettify.min.css" />
     <Content Include="Scripts\Polymer\google-code-prettify\bin\prettify.min.js" />

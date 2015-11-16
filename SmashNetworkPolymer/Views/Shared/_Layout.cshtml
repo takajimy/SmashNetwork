@@ -8,26 +8,14 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Styles.Render("~/Scripts/Polymer")
-
-        
         <link rel="import" href="~/Scripts/Polymer/core-icon/core-icon.html" />
-        <link rel="import" href="~/Scripts/Polymer/paper-toolbar/paper-toolbar.html">
         <link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
         <link rel="import" href="~/Scripts/Polymer/iron-icons/iron-icons.html">
-    
-        <style is="custom-style">
-            paper-toolbar.mine {
-                --paper-toolbar-background: red;
-                opacity: 0.5;
-            }
-        </style>
+        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-toolbar.html">
+
     </head>
     <body>
-        <paper-toolbar class="mine">
-            <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
-            <div class="title">Title</div>
-            <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
-        </paper-toolbar>
+        <smash-network-toolbar title="Smash Network" username="Takaji"></smash-network-toolbar>
         @RenderBody()
         @Scripts.Render("~/bundles/jquery")
         @RenderSection("scripts", required: false)
