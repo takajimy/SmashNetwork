@@ -8,35 +8,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../paper-styles/paper-styles.html">
-<link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="~/Scripts/Polymer/iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../custom-elements/smash-network-drawer-contents.html">
+<link rel="import" href="../custom-elements/smash-network-toolbar.html">
+<link rel="import" href="../custom-elements/smash-network-navigator.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
 
 <dom-module id="smash-network-drawer-panel">
     <template>
         <style is="custom-style">
-            paper-toolbar.mine {
-                --paper-toolbar-background: red;
-                --paper-toolbar-color: default;
-                background-color: transparent;
-                opacity: 1.0;
+            paper-drawer-panel {
+                --paper-drawer-panel-left-drawer-container: {
+                    color: #333
+                }
             }
         </style>
 
-        <paper-toolbar class="mine">
-            <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
-            <div class="title">{{title}}</div>
-            <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
-        </paper-toolbar>
+        <paper-drawer-panel force-narrow>
+
+            <div drawer>
+                <smash-network-drawer-contents></smash-network-drawer-contents>
+            </div>
+
+            <div main>
+
+                <smash-network-toolbar title="Smash Network" username="Takaji" is-logged-in>
+                    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                </smash-network-toolbar>
+
+                <content></content>
+
+            </div>
+
+        </paper-drawer-panel>
     </template>
 
     <script>
         Polymer({
-            is: "smash-network-toolbar",
+            is: "smash-network-drawer-panel",
             properties: {
-                title: {
-                    type: String,
-                    value: "Default Title Text"
-                }
             }
         });
     </script>

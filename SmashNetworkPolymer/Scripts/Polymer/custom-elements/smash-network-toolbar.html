@@ -8,28 +8,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../paper-styles/paper-styles.html">
-<link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="~/Scripts/Polymer/iron-icons/iron-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-fab/paper-fab.html">
+<link rel="import" href="../paper-drawer-panel/paper-drawer-panel.html">
 
 <dom-module id="smash-network-toolbar">
     <template>
         <style is="custom-style">
             paper-toolbar.mine {
                 --paper-toolbar-background: red;
-                --paper-toolbar-color: default;
+                /*--paper-toolbar-color: default;*/
                 background-color: transparent;
                 opacity: 1.0;
+            }
+            paper-button {
+                text-transform: none;
+            }
+            paper-button[raised].colorful {
+                background: #4285f4;
+                color: #fff;
             }
         </style>
 
         <paper-toolbar class="mine">
-            <paper-icon-button icon="menu" on-tap="menuAction"></paper-icon-button>
+            <content></content>
             <div class="title">{{title}}</div>
-            <div>{{username}}</div>
-            <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-            <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
-        
+            <div class="not-logged-in" hidden$="{{isLoggedIn}}">
+                <paper-button raised class="colorful">Sign In</paper-button>
+            </div>
+            <div class="logged-in" hidden$="{{!isLoggedIn}}">
+                {{username}}
+                <paper-icon-button icon="social:notifications"></paper-icon-button>
+                <paper-icon-button icon="icons:settings"></paper-icon-button>
+                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+            </div>
+            <div class="more-options" hidden>
+                <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+            </div>
         </paper-toolbar>
     </template>
 
@@ -44,6 +63,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 username: {
                     type: String,
                     value: "Default Username Text"
+                },
+                isLoggedIn: {
+                    type: Boolean,
+                    value: false
                 }
             }
         });
