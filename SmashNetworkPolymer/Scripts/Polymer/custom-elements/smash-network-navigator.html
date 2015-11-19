@@ -9,7 +9,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../paper-styles/paper-styles.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-icon-item/paper-icon-item.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
@@ -18,12 +18,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-navigator">
     <template>
         <style is="custom-style">
-            paper-icon-button {
+            .paper-icon-button {
                 --paper-item-icon-width: 20px;
             }
 
             .container {
-                padding-top: 4px;
+                padding-top: 10px;
                 padding-left: 16px;
                 padding-right: 16px;
                 padding-bottom: 10px;
@@ -33,14 +33,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 @apply(--layout-vertical);
                 font-size: large;
             }
+
+            .list-item {
+                padding-bottom: 10px;
+            }
         </style>
         <div class="container">
             <div class="list">
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                <div class="list-item">
+                    <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                </div>
+                <div class="list-item">
+                    <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                </div>
+                <div class="list-item">
+                    <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                </div>
+                <div class="list-item">
+                    <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                </div>
             </div>
         </div>
     </template>

@@ -8,9 +8,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
-<link rel="import" href="../paper-icon-item/paper-icon-item.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
@@ -18,35 +20,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-drawer-contents">
     <template>
         <style is="custom-style">
-            paper-item-icon {
-                --paper-item-icon-width: 10%;
-            } 
-            
+            .paper-icon-item {
+                --paper-item-icon-width: 20px;
+            }
+
+            .iron-icon {
+                --paper-item-icon-width: 20px;
+            }
+
             .container {
+                padding-top: 10px;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-bottom: 10px;
+            }
+
+            .list {
                 @apply(--layout-vertical);
-                padding: 10%;
-                margin: 10%;
                 font-size: large;
             }
         </style>
 
         <paper-toolbar>
-            <h4>Icon with text</h4>
+            <h4>Smash Network</h4>
         </paper-toolbar>
 
         <div class="container">
-            <paper-icon-item>
-                <iron-icon icon="inbox" item-icon></iron-icon> Inbox
-            </paper-icon-item>
-            <paper-icon-item>
-                <iron-icon icon="send" item-icon></iron-icon> Outbox
-            </paper-icon-item>
-            <paper-icon-item>
-                <iron-icon icon="delete" item-icon></iron-icon> Trash
-            </paper-icon-item>
-            <paper-icon-item>
-                <iron-icon icon="report" item-icon></iron-icon> Spam
-            </paper-icon-item>
+            <div class="list">
+                <paper-icon-item>
+                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Feed
+                </paper-icon-item>
+                <paper-icon-item>
+                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Regions
+                </paper-icon-item>
+                <paper-icon-item>
+                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Users
+                </paper-icon-item>
+                <paper-icon-item>
+                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Articles
+                </paper-icon-item>
+            </div>
         </div>
         
     </template>
