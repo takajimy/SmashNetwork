@@ -9,12 +9,15 @@
         @Scripts.Render("~/bundles/modernizr")
         @Styles.Render("~/Scripts/Polymer")
         <link rel="import" href="~/Scripts/Polymer/core-icon/core-icon.html" />
+        <link rel="import" href=".~/Scripts/Polymer/iron-icons/iron-icons.html">
         <link rel="import" href="~/Scripts/Polymer/paper-drawer-panel/paper-drawer-panel.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-button/paper-button.html">
         <link rel="import" href="~/Scripts/Polymer/iron-flex-layout/classes/iron-flex-layout.html">
         <link rel="import" href="~/Scripts/Polymer/paper-card/paper-card.html">
-        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-toolbar.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-drawer-contents.html">
+        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-link-button.html">
     
         <style is="custom-style">
             paper-drawer-panel {
@@ -22,17 +25,44 @@
                     color: #333;
                 }
             }
+            paper-toolbar.mine {
+                --paper-toolbar-background: red;
+                background-color: transparent;
+                opacity: 1.0;
+            }
+
+            paper-button {
+                text-transform: none;
+            }
+
+            paper-button[raised].colorful {
+                background: #4285f4;
+                color: #fff;
+            }
         </style>
     </head>
     <body>
         <paper-drawer-panel force-narrow>
             <div drawer>
-                <smash-network-drawer-contents>
-                    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-                </smash-network-drawer-contents>
+                <smash-network-drawer-contents></smash-network-drawer-contents>
             </div>
             <div main>
-                <smash-network-toolbar title="Smash Network" username="Takaji" is-logged-in></smash-network-toolbar>
+                <paper-toolbar class="mine">
+                    <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+                    <div class="title">@ViewBag.ToolbarTitle</div>
+                    <div class="not-logged-in" hidden="@ViewBag.IsLoggedIn">
+                        <smash-network-link-button text="Sign In" link="/login"></smash-network-link-button>
+                    </div>
+                    <div class="logged-in" hidden="@(!ViewBag.IsLoggedIn)">
+                        @ViewBag.Username
+                        <paper-icon-button icon="social:notifications"></paper-icon-button>
+                        <paper-icon-button icon="icons:settings"></paper-icon-button>
+                        <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                    </div>
+                    <div class="more-options" hidden>
+                        <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
+                    </div>
+                </paper-toolbar>
                 @RenderBody()
             </div>
         </paper-drawer-panel>

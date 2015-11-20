@@ -188,13 +188,23 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Blogs\BlogsAreaRegistration.cs" />
+    <Compile Include="Areas\Blogs\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Feed\FeedAreaRegistration.cs" />
+    <Compile Include="Areas\Regions\RegionsAreaRegistration.cs" />
+    <Compile Include="Areas\Users\Models\Role.cs" />
+    <Compile Include="Areas\Users\Models\User.cs" />
+    <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="DAL\SmashNetworkDBContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\AbstractModel.cs" />
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -254,6 +264,12 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="Areas\Users\Views\Web.config" />
+    <Content Include="Areas\Regions\Views\Web.config" />
+    <Content Include="Areas\Blogs\Views\Web.config" />
+    <Content Include="Areas\Feed\Views\Web.config" />
+    <Content Include="Areas\Blogs\Views\Blogs\Index.cshtml" />
+    <Content Include="Areas\Blogs\Views\_ViewStart.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\test-background.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -616,6 +632,7 @@
     <Content Include="Scripts\Polymer\core-transition\core-transition.html" />
     <Content Include="Scripts\Polymer\core-transition\demo.html" />
     <Content Include="Scripts\Polymer\core-transition\index.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-link-button.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-contents.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-panel.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-navigator.html" />
@@ -2044,9 +2061,21 @@
     <Content Include="Scripts\Polymer\iron-iconset\.bower.json" />
     <Content Include="Scripts\Polymer\iron-iconset\bower.json" />
     <Content Include="Scripts\Polymer\iron-iconset\README.md" />
+    <Content Include="Views\Home\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Blogs\Models\" />
+    <Folder Include="Areas\Blogs\Views\Shared\" />
+    <Folder Include="Areas\Feed\Controllers\" />
+    <Folder Include="Areas\Feed\Models\" />
+    <Folder Include="Areas\Feed\Views\Shared\" />
+    <Folder Include="Areas\Regions\Controllers\" />
+    <Folder Include="Areas\Regions\Models\" />
+    <Folder Include="Areas\Regions\Views\Shared\" />
+    <Folder Include="Areas\Users\Controllers\" />
+    <Folder Include="Areas\Users\Views\Shared\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
