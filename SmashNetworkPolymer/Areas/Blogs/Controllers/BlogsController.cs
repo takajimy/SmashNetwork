@@ -6,10 +6,13 @@ using System.Web.Mvc;
 
 namespace SmashNetworkPolymer.Areas.Blogs.Controllers
 {
-    public class BlogController : Controller
+    public class BlogsController : Controller
     {
         public ActionResult Index()
         {
+            ViewBag.ToolbarTitle = "Smash Network";
+            ViewBag.IsLoggedIn = true;
+            ViewBag.Username = "Takaji";
             return View();
         }
     }

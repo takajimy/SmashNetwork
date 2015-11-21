@@ -1,13 +1,23 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.ToolbarTitle = "Smash Network";
+    
+    // These two are temporary -> Until login is fully configured
+    ViewBag.IsLoggedIn = false;
+    ViewBag.Username = "takaji";
+}
+
+@section AdditionalStyles {
+    container: {
+        padding-top: 20px;
+    }
 }
 
 <div class="horizontal layout">
     <smash-network-navigator></smash-network-navigator>
 
-    <div class="flex">
+    <div class="container">
         <!--<smash-network-card></smash-network-card>-->
-        <paper-card heading="Feed">
+        <paper-card heading="Home">
             <div class="card-content">
                 I am the feed content...
             </div>

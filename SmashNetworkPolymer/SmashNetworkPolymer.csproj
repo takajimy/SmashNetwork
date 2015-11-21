@@ -189,21 +189,24 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Blogs\BlogsAreaRegistration.cs" />
-    <Compile Include="Areas\Blogs\Controllers\BlogController.cs" />
+    <Compile Include="Areas\Blogs\Controllers\BlogsController.cs" />
     <Compile Include="Areas\Feed\FeedAreaRegistration.cs" />
     <Compile Include="Areas\Regions\RegionsAreaRegistration.cs" />
     <Compile Include="Areas\Users\Models\Role.cs" />
     <Compile Include="Areas\Users\Models\User.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="DAL\SmashNetworkDBContext.cs" />
     <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201511202227359_InitialCreate.cs" />
+    <Compile Include="Migrations\201511202227359_InitialCreate.Designer.cs">
+      <DependentUpon>201511202227359_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AbstractModel.cs" />
-    <Compile Include="Models\AccountModels.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -632,6 +635,8 @@
     <Content Include="Scripts\Polymer\core-transition\core-transition.html" />
     <Content Include="Scripts\Polymer\core-transition\demo.html" />
     <Content Include="Scripts\Polymer\core-transition\index.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-get-button.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-post-form.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-link-button.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-contents.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-panel.html" />
@@ -762,6 +767,13 @@
     <Content Include="Scripts\Polymer\iron-form-element-behavior\demo\simple-form.html" />
     <Content Include="Scripts\Polymer\iron-form-element-behavior\index.html" />
     <Content Include="Scripts\Polymer\iron-form-element-behavior\iron-form-element-behavior.html" />
+    <Content Include="Scripts\Polymer\iron-form\demo\index.html" />
+    <Content Include="Scripts\Polymer\iron-form\demo\simple-element.html" />
+    <Content Include="Scripts\Polymer\iron-form\index.html" />
+    <Content Include="Scripts\Polymer\iron-form\iron-form.html" />
+    <Content Include="Scripts\Polymer\iron-form\test\basic.html" />
+    <Content Include="Scripts\Polymer\iron-form\test\index.html" />
+    <Content Include="Scripts\Polymer\iron-form\test\simple-element.html" />
     <Content Include="Scripts\Polymer\iron-iconset-svg\.gitignore" />
     <Content Include="Scripts\Polymer\iron-iconset-svg\demo\index.html" />
     <Content Include="Scripts\Polymer\iron-iconset-svg\demo\svg-sample-icons.html" />
@@ -1392,6 +1404,12 @@
     <Content Include="Scripts\Polymer\prettify-element\index.html" />
     <Content Include="Scripts\Polymer\prettify-element\prettify-element.html" />
     <Content Include="Scripts\Polymer\prettify-element\prettify-import.html" />
+    <Content Include="Scripts\Polymer\promise-polyfill\Gruntfile.js" />
+    <Content Include="Scripts\Polymer\promise-polyfill\promise-polyfill-lite.html" />
+    <Content Include="Scripts\Polymer\promise-polyfill\promise-polyfill.html" />
+    <Content Include="Scripts\Polymer\promise-polyfill\Promise-Statics.js" />
+    <Content Include="Scripts\Polymer\promise-polyfill\Promise.js" />
+    <Content Include="Scripts\Polymer\promise-polyfill\Promise.min.js" />
     <Content Include="Scripts\Polymer\sampler-scaffold\demo.html" />
     <Content Include="Scripts\Polymer\sampler-scaffold\demos\checkbox.html" />
     <Content Include="Scripts\Polymer\sampler-scaffold\demos\color.html" />
@@ -2062,6 +2080,14 @@
     <Content Include="Scripts\Polymer\iron-iconset\bower.json" />
     <Content Include="Scripts\Polymer\iron-iconset\README.md" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Scripts\Polymer\iron-form\bower.json" />
+    <Content Include="Scripts\Polymer\iron-form\CONTRIBUTING.md" />
+    <Content Include="Scripts\Polymer\iron-form\README.md" />
+    <Content Include="Scripts\Polymer\promise-polyfill\bower.json" />
+    <Content Include="Scripts\Polymer\promise-polyfill\LICENSE" />
+    <Content Include="Scripts\Polymer\promise-polyfill\package.json" />
+    <Content Include="Scripts\Polymer\promise-polyfill\README.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -2079,6 +2105,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201511202227359_InitialCreate.resx">
+      <DependentUpon>201511202227359_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

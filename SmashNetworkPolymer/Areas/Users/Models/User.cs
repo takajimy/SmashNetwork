@@ -46,6 +46,24 @@ namespace SmashNetworkPolymer.Areas.Users.Models
         }
     }
 
+    public class PasswordManager
+    {
+        public string username;
+        public Hash hash;
+        public Salt salt;
+
+        public PasswordManager(string p_username, string p_password)
+        {
+            username = p_username;
+
+            salt = new Salt();
+            salt.generateSaltBytes();
+
+            hash = new Hash();
+            hash.computeHashBytes(Encoding.UTF8.GetBytes(p_password), salt.saltBytes);
+        }
+    }
+
     public class Salt
     {
         private const int SALT_SIZE = 24;

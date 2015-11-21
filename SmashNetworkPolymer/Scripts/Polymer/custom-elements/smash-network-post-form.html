@@ -1,0 +1,180 @@
+﻿<!--
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-card/paper-card.html">
+<link rel="import" href="../paper-item/paper-item-body.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../iron-form/iron-form.html">
+<link rel="import" href="../iron-ajax/iron-ajax.html">
+
+<dom-module id="smash-network-post-form">
+    <template>
+        <style is="custom-style">
+            paper-button {
+                text-transform: none;
+            }
+
+            /*paper-button[raised].colorful {
+                background: #4285f4;
+                color: #fff;
+            }*/
+        </style>
+
+        <paper-card heading="{{ heading }}">
+            <form id="form" method="post" action="{{ link }}">
+                <div class="card-content">
+                    <content></content>
+                </div>
+                <div class="card-actions">
+                    <paper-button raised on-click="submitForm">Submit</paper-button>
+                </div>
+            </form>
+        </paper-card>
+    </template>
+
+    <script>
+        Polymer({
+            is: 'smash-network-post-form',
+
+            properties: {
+                link: String,
+                heading: String
+            },
+
+            submitForm: function () {
+                if (!this.noValidate && !this.validate()) {
+                    this._doFakeSubmitForValidation();
+                    this.fire('iron-form-invalid');
+                    return;
+                }
+                form.submit();
+            },
+
+            listeners: {
+                'iron-form-element-register': '_registerElement',
+                'iron-form-element-unregister': '_unregisterElement',
+                'submit': '_onSubmit',
+                'reset': '_onReset'
+            },
+
+            ready: function() {
+                // Object that handles the ajax form submission request.
+                this.request = document.createElement('iron-ajax');
+                this.request.addEventListener('response', this._handleFormResponse.bind(this));
+                this.request.addEventListener('error', this._handleFormError.bind(this));
+                this._customElements = [];
+                this._customElementsInitialValues = [];
+            },
+
+            _onSubmit: function(event) {
+                this.submit();
+                if (event) {
+                    event.preventDefault();
+                }
+                return false;
+            },
+
+            _onReset: function(event) {
+                this._resetCustomElements();
+            },
+            
+            _handleFormResponse: function (event) {
+                this.fire('iron-form-response', event.detail);
+            },
+
+            _handleFormError: function (event) {
+                this.fire('iron-form-error', event.detail);
+            },
+
+            _registerElement: function(e) {
+                var element = e.target;
+                element._parentForm = this;
+                this._customElements.push(element);
+                this._customElementsInitialValues.push(
+                    this._usesCheckedInsteadOfValue(element) ? element.checked : element.value);
+            },
+
+            _unregisterElement: function(e) {
+                var target = e.detail.target;
+                if (target) {
+                    var index = this._customElements.indexOf(target);
+                    if (index > -1) {
+                        this._customElements.splice(index, 1);
+                        this._customElementsInitialValues.splice(index, 1);
+                    }
+                }
+            },
+
+            validate: function() {
+                var valid = true;
+                var validatable;
+                for (var el, i = 0; el = this._customElements[i], i < this._customElements.length; i++) {
+                    if (el.required && !el.disabled) {
+                        validatable = (el);
+                        if (validatable.validate)
+                            valid = !!validatable.validate() && valid;
+                    }
+                }
+                return valid;
+            },
+
+            _usesCheckedInsteadOfValue: function(el) {
+                if (el.type == 'checkbox' ||
+                    el.type == 'radio' ||
+                    el.getAttribute('role') == 'checkbox' ||
+                    el.getAttribute('role') == 'radio' ||
+                    el._hasIronCheckedElementBehavior) {
+                    return true;
+                }
+                return false;
+            },
+
+            _useValue: function(el) {
+                if (el.disabled || !el.name) {
+                    return false;
+                }
+                if (this._usesCheckedInsteadOfValue(el))
+                    return el.checked;
+                return true;
+            },
+
+            _doFakeSubmitForValidation: function() {
+                var fakeSubmit = document.createElement('input');
+                fakeSubmit.setAttribute('type', 'submit');
+                fakeSubmit.style.display = 'none';
+                this.appendChild(fakeSubmit);
+                fakeSubmit.click();
+                this.removeChild(fakeSubmit);
+            },
+                
+            _resetCustomElements: function() {
+                this.async(function() {
+                    for (var el, i = 0; el = this._customElements[i], i < this._customElements.length; i++) {
+                        if (el.disabled)
+                            continue;
+                        if (this._usesCheckedInsteadOfValue(el)) {
+                            el.checked = this._customElementsInitialValues[i];
+                        } else {
+                            el.value = this._customElementsInitialValues[i];
+                        }
+                    }
+                    this.fire('iron-form-reset');
+                }, 1);
+            }
+        })
+    </script>
+</dom-module>

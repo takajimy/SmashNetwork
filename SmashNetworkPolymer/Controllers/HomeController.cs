@@ -15,18 +15,15 @@ namespace SmashNetworkPolymer.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.ToolbarTitle = "Smash Network";
-            ViewBag.IsLoggedIn = false;
-            ViewBag.Username = "takaji";
-
             return View();
         }
 
         public ActionResult Login()
         {
-            ViewBag.Title = "Login";
-            ViewBag.Message = "Your contact page.";
-
+            if (TempData["message"] != null)
+            {
+                ViewBag.Message = TempData["message"].ToString();
+            }
             return View();
         }
 
@@ -42,12 +39,43 @@ namespace SmashNetworkPolymer.Controllers
                     if (user.IsPasswordMatch(userMatch))
                     {
                         FormsAuthentication.SetAuthCookie(user.Username, false);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Blogs", new { area = "Blogs" });
                     }
                     else
                     {
                         ModelState.AddModelError("", "Incorrect login.");
                     }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "User does not exist.");
+                }
+            }
+            return View(user);
+        }
+
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Register(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                User userMatch = db.Users.FirstOrDefault(u => u.Username == user.Username);
+                if (userMatch == null)
+                {
+                    db.Users.Add(user);
+                    db.SaveChanges();
+                    TempData["message"] = "Successfully added User.";
+                    return RedirectToAction("Login", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "That Username is already taken!");
                 }
             }
             return View(user);
