@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Collections.Generic;
 using SmashNetworkPolymer.Areas.Users.Models;
 
 namespace SmashNetworkPolymer.DAL

@@ -68,6 +68,8 @@ namespace SmashNetworkPolymer.Controllers
                 User userMatch = db.Users.FirstOrDefault(u => u.Username == user.Username);
                 if (userMatch == null)
                 {
+                    PasswordManager pm = new PasswordManager(user.Username, user.Hash);
+                    user.Salt = pm.salt.getSaltString();
                     db.Users.Add(user);
                     db.SaveChanges();
                     TempData["message"] = "Successfully added User.";
