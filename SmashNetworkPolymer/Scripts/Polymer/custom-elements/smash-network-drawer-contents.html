@@ -16,18 +16,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../custom-elements//smash-network-drawer-button.html">
 
 <dom-module id="smash-network-drawer-contents">
     <template>
         <style is="custom-style">
-            .paper-icon-item {
-                --paper-item-icon-width: 20px;
-            }
-
-            .iron-icon {
-                --paper-item-icon-width: 20px;
-            }
-
             .container {
                 padding-top: 10px;
                 padding-left: 16px;
@@ -47,18 +40,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         <div class="container">
             <div class="list">
-                <paper-icon-item>
-                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Feed
-                </paper-icon-item>
-                <paper-icon-item>
-                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Regions
-                </paper-icon-item>
-                <paper-icon-item>
-                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Users
-                </paper-icon-item>
-                <paper-icon-item>
-                    <iron-icon icon="icons:account-circle" item-icon></iron-icon> Articles
-                </paper-icon-item>
+                <smash-network-drawer-button link="/Blogs/Blogs" icon="icons:account-circle">
+                    Feed
+                </smash-network-drawer-button>
+                <smash-network-drawer-button link="/Blogs/Blogs" icon="icons:account-circle">
+                    Regions
+                </smash-network-drawer-button>
+                <smash-network-drawer-button link="/Blogs/Blogs" icon="icons:account-circle">
+                    Users
+                </smash-network-drawer-button>
+                <smash-network-drawer-button link="/Blogs/Blogs" icon="icons:account-circle">
+                    Articles
+                </smash-network-drawer-button>
             </div>
         </div>
         

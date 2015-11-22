@@ -8,53 +8,49 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../paper-item/paper-item.html">
-<link rel="import" href="../custom-elements/smash-network-navigator-button.html">
+<link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
 
-<dom-module id="smash-network-navigator">
+<dom-module id="smash-network-navigator-button">
     <template>
         <style is="custom-style">
             .paper-icon-button {
                 --paper-item-icon-width: 20px;
             }
 
-            .container {
-                padding-top: 10px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-bottom: 10px;
-            }
-
-            .list {
-                @apply(--layout-vertical);
-                font-size: large;
-            }
-
             .list-item {
                 padding-bottom: 10px;
             }
         </style>
-        <div class="container">
-            <div class="list">
-                <smash-network-navigator-button to="Feed" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Regions" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Users" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Articles" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-            </div>
+        
+        <div class="list-item">
+            <paper-icon-button id="{{to}}" icon="{{icon}}" on-click="handleClick">
+                <content></content>
+            </paper-icon-button>
+            <paper-tooltip for="{{to}}" offset="0">{{to}}</paper-tooltip>
         </div>
-    </template>
+
+</template>
 
     <script>
         Polymer({
-            is: "smash-network-navigator",
+            is: 'smash-network-navigator-button',
             properties: {
+                to: String,
+                link: String,
+                icon: String,
+                title: String
             },
-        });
+            handleClick: function() {
+                window.location.href = this.link;
+            }
+        })
     </script>
 </dom-module>

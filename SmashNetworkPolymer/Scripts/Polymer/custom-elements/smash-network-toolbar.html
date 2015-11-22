@@ -16,30 +16,46 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-button/paper-button.html">
 <link rel="import" href="../paper-fab/paper-fab.html">
 <link rel="import" href="../paper-drawer-panel/paper-drawer-panel.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../custom-elements/smash-network-get-button.html">
+<link rel="import" href="../paper-styles/default-theme.html">
+<link rel="import" href="../paper-styles/typography.html">
 
 <dom-module id="smash-network-toolbar">
     <template>
         <style is="custom-style">
             paper-toolbar.mine {
                 --paper-toolbar-background: red;
-                /*--paper-toolbar-color: default;*/
                 background-color: transparent;
                 opacity: 1.0;
             }
+
             paper-button {
                 text-transform: none;
             }
-            paper-button[raised].colorful {
-                background: #4285f4;
-                color: #fff;
+
+            clickable-title {
+                @apply(--paper-font-common-base);
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                font-size: 20px;
+                font-weight: 400;
+                line-height: 1;
+                pointer-events: none;
+                @apply(--layout-flex);
+                @apply(--paper-toolbar-title);
+                margin-left: 56px;
             }
         </style>
 
         <paper-toolbar class="mine">
             <content></content>
-            <div class="title">{{title}}</div>
+            <div class="title">
+                {{title}}
+            </div>
             <div class="not-logged-in" hidden$="{{isLoggedIn}}">
-                <paper-button raised class="colorful">Sign In</paper-button>
+                <smash-network-get-button link="/Home/Login">Sign In</smash-network-get-button>
             </div>
             <div class="logged-in" hidden$="{{!isLoggedIn}}">
                 {{username}}
@@ -68,7 +84,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 isLoggedIn: {
                     type: Boolean,
                     value: false
+                },
+                link: {
+                    type: String,
+                    value: "/Home/Index"
                 }
+            },
+            handleClick: function () {
+                window.location.href = this.link;
             }
         });
     </script>

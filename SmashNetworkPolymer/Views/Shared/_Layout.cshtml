@@ -19,6 +19,7 @@
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-drawer-contents.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-get-button.html">
+        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-toolbar.html">
         @RenderSection("AdditionalImports", required: false)
         <style is="custom-style">
             paper-drawer-panel {
@@ -26,20 +27,7 @@
                     color: #333;
                 }
             }
-            paper-toolbar.mine {
-                --paper-toolbar-background: red;
-                background-color: transparent;
-                opacity: 1.0;
-            }
 
-            paper-button {
-                text-transform: none;
-            }
-
-            paper-button[raised].colorful {
-                background: #4285f4;
-                color: #fff;
-            }
             @RenderSection("AdditionalStyles", required: false)
         </style>
     </head>
@@ -49,22 +37,9 @@
                 <smash-network-drawer-contents></smash-network-drawer-contents>
             </div>
             <div main>
-                <paper-toolbar class="mine">
+                <smash-network-toolbar title="@ViewBag.ToolbarTitle" isLoggedIn="@ViewBag.IsLoggedIn" username="@ViewBag.Username" link="/Home/Index">
                     <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-                    <div class="title">@ViewBag.ToolbarTitle</div>
-                    <div class="not-logged-in" hidden="@ViewBag.IsLoggedIn">
-                        <smash-network-get-button link="/Home/Login">Sign In</smash-network-get-button>
-                    </div>
-                    <div class="logged-in" hidden="@(!ViewBag.IsLoggedIn)">
-                        @ViewBag.Username
-                        <paper-icon-button icon="social:notifications"></paper-icon-button>
-                        <paper-icon-button icon="icons:settings"></paper-icon-button>
-                        <paper-icon-button icon="icons:account-circle"></paper-icon-button>
-                    </div>
-                    <div class="more-options" hidden>
-                        <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
-                    </div>
-                </paper-toolbar>
+                </smash-network-toolbar>
                 @RenderBody()
             </div>
         </paper-drawer-panel>

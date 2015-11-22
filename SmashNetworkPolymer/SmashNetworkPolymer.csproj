@@ -636,6 +636,9 @@
     <Content Include="Scripts\Polymer\core-transition\core-transition.html" />
     <Content Include="Scripts\Polymer\core-transition\demo.html" />
     <Content Include="Scripts\Polymer\core-transition\index.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-drawer-button.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-fab.html" />
+    <Content Include="Scripts\Polymer\custom-elements\smash-network-navigator-button.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-get-button.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-post-form.html" />
     <Content Include="Scripts\Polymer\custom-elements\smash-network-link-button.html" />

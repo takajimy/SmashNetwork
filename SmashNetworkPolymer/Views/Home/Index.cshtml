@@ -6,22 +6,28 @@
     ViewBag.Username = "takaji";
 }
 
+@section AdditionalImports {
+    <link rel="import" href="~/Scripts/Polymer/paper-item/paper-item.html">   
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-fab.html">   
+}
+
 @section AdditionalStyles {
     container: {
-        padding-top: 20px;
+        padding-top: 60px;
+    }
+
+    paper-fab {
+        background-color: transparent;
     }
 }
 
 <div class="horizontal layout">
     <smash-network-navigator></smash-network-navigator>
-
     <div class="container">
-        <!--<smash-network-card></smash-network-card>-->
-        <paper-card heading="Home">
-            <div class="card-content">
-                I am the feed content...
-            </div>
-        </paper-card>
+        <paper-item>
+            <div>Register?</div>
+        </paper-item>
+        <smash-network-fab icon="add" link="/Home/Register"></smash-network-fab>
     </div>
 </div>
 
