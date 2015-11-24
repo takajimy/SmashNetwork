@@ -11,11 +11,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-tooltip/paper-tooltip.html">
 <link rel="import" href="../custom-elements/smash-network-navigator-button.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-icons/maps-icons.html">
+<link rel="import" href="../iron-icons/editor-icons.html">
+<link rel="import" href="../iron-icons/social-icons.html">
+<link rel="import" href="../iron-icons/hardware-icons.html">
+<link rel="import" href="../iron-icons/av-icons.html">
 <link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
-<link rel="import" href="../paper-tooltip/paper-tooltip.html">
 
 <dom-module id="smash-network-navigator">
     <template>
@@ -42,10 +47,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
         <div class="container">
             <div class="list">
-                <smash-network-navigator-button to="Feed" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Regions" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Users" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
-                <smash-network-navigator-button to="Articles" link="/Blogs/Blogs" icon="icons:account-circle"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Feed" link="/Feed" icon="hardware:cast-connected"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Regions" link="/Regions" icon="maps:place"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Articles" link="/Articles" icon="editor:insert-drive-file"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Members" link="/Members" icon="social:people"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Tournaments" link="/Tournaments" icon="av:games"></smash-network-navigator-button>
+                <smash-network-navigator-button to="Debug" link="/Debug" icon="social:whatshot"></smash-network-navigator-button>
             </div>
         </div>
     </template>

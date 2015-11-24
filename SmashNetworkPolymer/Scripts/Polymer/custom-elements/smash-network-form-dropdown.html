@@ -1,0 +1,54 @@
+﻿<!--
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../paper-styles/paper-styles.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-item/paper-icon-item.html">
+<link rel="import" href="../paper-item/paper-item.html">
+<link rel="import" href="../paper-item/paper-item-body.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../paper-listbox/paper-listbox.html">
+<link rel="import" href="../paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../iron-input/iron-input.html">
+<link rel="import" href="../iron-form/iron-form.html">
+
+<dom-module id="smash-network-form-dropdown">
+    <template>
+        <style is="custom-style">
+
+        </style>
+
+        <paper-dropdown-menu label="Database Entity">
+            <paper-listbox class="dropdown-content" bind-value="{{bindValue}}">
+                <paper-item>Users</paper-item>
+            </paper-listbox>
+        </paper-dropdown-menu>
+        <paper-input id="tableName" bind-value="{{bindValue}}"></paper-input>
+        <input is="iron-input" bind-value="{{bindValue}}" value="{{value::input}}">
+</template>
+
+    <script>
+        Polymer({
+            is: 'smash-network-form-dropdown',
+            properties: {
+                label: String,
+                variable: String,
+                selected: {
+                    type: Number,
+                    value: 0,
+                    notify: true
+                }
+            }
+        })
+    </script>
+</dom-module>

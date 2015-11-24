@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@section AdditionalImports {
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator-button.html">
+}
+
+@section AdditionalStyles {
+
+}
+
+<div class="horizontal layout">
+    <smash-network-navigator></smash-network-navigator>
+
+    <div class="flex">
+        <!--<smash-network-card></smash-network-card>-->
+        <paper-card heading="Regions">
+            <div class="card-content">
+                I am the feed content...
+            </div>
+        </paper-card>
+    </div>
+</div>
+

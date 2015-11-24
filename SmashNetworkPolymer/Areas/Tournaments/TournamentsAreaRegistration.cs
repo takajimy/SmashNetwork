@@ -1,24 +1,24 @@
 ﻿using System.Web.Mvc;
 
-namespace SmashNetworkPolymer.Areas.Regions
+namespace SmashNetworkPolymer.Areas.Tournaments
 {
-    public class RegionsAreaRegistration : AreaRegistration
+    public class TournamentsAreaRegistration : AreaRegistration
     {
         public override string AreaName
         {
             get
             {
-                return "Regions";
+                return "Tournaments";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
             context.MapRoute(
-                "Regions_default",
+                "Tournaments_default",
                 "{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional },
-                new { controller = "(Regions)" }
+                new { controller = "(Tournaments)" }
             );
         }
     }

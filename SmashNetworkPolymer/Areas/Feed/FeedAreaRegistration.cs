@@ -16,8 +16,9 @@ namespace SmashNetworkPolymer.Areas.Feed
         {
             context.MapRoute(
                 "Feed_default",
-                "Feed/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional }
+                "{controller}/{action}/{id}",
+                new { action = "Index", id = UrlParameter.Optional },
+                new { controller = "(Feed)" }
             );
         }
     }

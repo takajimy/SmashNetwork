@@ -4,9 +4,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace SmashNetworkPolymer.Areas.Blogs.Controllers
+namespace SmashNetworkPolymer.Areas.Tournaments.Controllers
 {
-    public class BlogsController : Controller
+    public class TournamentsController : Controller
     {
         public ActionResult Index()
         {
