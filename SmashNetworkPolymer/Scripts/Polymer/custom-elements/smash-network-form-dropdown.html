@@ -12,6 +12,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
 <link rel="import" href="../paper-item/paper-icon-item.html">
+<link rel="import" href="../paper-input/paper-input.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-item/paper-item-body.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
@@ -25,17 +26,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-form-dropdown">
     <template>
         <style is="custom-style">
-
         </style>
 
-        <paper-dropdown-menu label="Database Entity">
-            <paper-listbox class="dropdown-content" bind-value="{{bindValue}}">
-                <paper-item>Users</paper-item>
+        <paper-dropdown-menu label="{{label}}" selected-item-label="{{selectedValue}}">
+            <paper-listbox class="dropdown-content">
+                <content></content>
             </paper-listbox>
         </paper-dropdown-menu>
-        <paper-input id="tableName" bind-value="{{bindValue}}"></paper-input>
-        <input is="iron-input" bind-value="{{bindValue}}" value="{{value::input}}">
-</template>
+        <input is="iron-input" id="{{variable}}" name="{{variable}}" bind-value="{{selectedValue}}" type="hidden">
+    </template>
 
     <script>
         Polymer({

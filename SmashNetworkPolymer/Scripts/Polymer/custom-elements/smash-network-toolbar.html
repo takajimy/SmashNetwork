@@ -24,32 +24,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-toolbar">
     <template>
         <style is="custom-style">
-            paper-toolbar.mine {
-                --paper-toolbar-background: red;
-                background-color: transparent;
-                opacity: 1.0;
+            paper-toolbar {
+                --paper-toolbar-background: transparent;
+                --paper-toolbar-title: {
+                    pointer-events: auto;
+                    color: #4cff00;
+                }
             }
 
             paper-button {
                 text-transform: none;
             }
 
-            clickable-title {
-                @apply(--paper-font-common-base);
-                white-space: nowrap;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                font-size: 20px;
-                font-weight: 400;
-                line-height: 1;
-                pointer-events: none;
-                @apply(--layout-flex);
-                @apply(--paper-toolbar-title);
-                margin-left: 56px;
-            }
+            
         </style>
 
-        <paper-toolbar class="mine">
+        <paper-toolbar>
             <content></content>
             <div class="title">
                 {{title}}
