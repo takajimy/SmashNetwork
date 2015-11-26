@@ -195,9 +195,9 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Articles\ArticlesAreaRegistration.cs" />
     <Compile Include="Areas\Articles\Controllers\ArticlesController.cs" />
-    <Compile Include="Areas\Debug\Controllers\DebugController.cs" />
-    <Compile Include="Areas\Debug\DebugAreaRegistration.cs" />
-    <Compile Include="Areas\Debug\Models\DataViewModel.cs" />
+    <Compile Include="Areas\Develop\Controllers\DevelopController.cs" />
+    <Compile Include="Areas\Develop\DevelopAreaRegistration.cs" />
+    <Compile Include="Areas\Develop\Models\DataViewModel.cs" />
     <Compile Include="Areas\Feed\Controllers\FeedController.cs" />
     <Compile Include="Areas\Feed\FeedAreaRegistration.cs" />
     <Compile Include="Areas\Regions\Controllers\RegionsController.cs" />
@@ -287,20 +287,20 @@
     <Content Include="Areas\Articles\Views\Articles\Index.cshtml" />
     <Content Include="Areas\Articles\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Tournaments\Views\Web.config" />
-    <Content Include="Areas\Debug\Views\Web.config" />
-    <Content Include="Areas\Debug\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Develop\Views\Web.config" />
+    <Content Include="Areas\Develop\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Feed\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Members\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Regions\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Tournaments\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Debug\Views\Debug\Index.cshtml" />
+    <Content Include="Areas\Develop\Views\Develop\Index.cshtml" />
     <Content Include="Areas\Feed\Views\Feed\Index.cshtml" />
     <Content Include="Areas\Members\Views\Members\Index.cshtml" />
     <Content Include="Areas\Regions\Views\Regions\Index.cshtml" />
     <Content Include="Areas\Tournaments\Views\Tournaments\Index.cshtml" />
-    <Content Include="Areas\Debug\Views\Debug\Create.cshtml" />
-    <Content Include="Areas\Debug\Views\Debug\Edit.cshtml" />
-    <Content Include="Areas\Debug\Views\Debug\Delete.cshtml" />
+    <Content Include="Areas\Develop\Views\Develop\Create.cshtml" />
+    <Content Include="Areas\Develop\Views\Develop\Edit.cshtml" />
+    <Content Include="Areas\Develop\Views\Develop\Delete.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\test-background.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
@@ -2124,7 +2124,7 @@
   <ItemGroup>
     <Folder Include="Areas\Articles\Models\" />
     <Folder Include="Areas\Articles\Views\Shared\" />
-    <Folder Include="Areas\Debug\Views\Shared\" />
+    <Folder Include="Areas\Develop\Views\Shared\" />
     <Folder Include="Areas\Feed\Models\" />
     <Folder Include="Areas\Feed\Views\Shared\" />
     <Folder Include="Areas\Members\Views\Shared\" />
@@ -2135,7 +2135,9 @@
     <Folder Include="Helpers\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="packages.config" />
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
