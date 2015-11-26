@@ -24,19 +24,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .paper-icon-button {
                 --paper-item-icon-width: 20px;
             }
-
-            .list-item {
-                padding-bottom: 10px;
-            }
         </style>
         
-        <div class="list-item">
-            <paper-icon-button id="{{to}}" icon="{{icon}}" on-click="handleClick">
-                <content></content>
-            </paper-icon-button>
-            <paper-tooltip for="{{to}}" offset="0">{{to}}</paper-tooltip>
-        </div>
-
+        <paper-icon-button id="{{to}}" icon="{{icon}}" on-click="handleClick">
+            <content></content>
+        </paper-icon-button>
+        <paper-tooltip for="{{to}}" offset="0">{{to}}</paper-tooltip>
 </template>
 
     <script>

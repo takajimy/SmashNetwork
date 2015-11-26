@@ -37,7 +37,7 @@
                 <smash-network-drawer-contents></smash-network-drawer-contents>
             </div>
             <div main>
-                <smash-network-toolbar title="@ViewBag.ToolbarTitle" is-logged-in="@ViewBag.IsLoggedIn" username="@ViewBag.Username" link="/Home/Index">
+                <smash-network-toolbar title="@ViewBag.ToolbarTitle" is-logged-in="@Request.IsAuthenticated" username="@User.Identity.Name" link="/Home/Index">
                     <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
                 </smash-network-toolbar>
                 @RenderBody()

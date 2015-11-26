@@ -39,7 +39,7 @@ namespace SmashNetworkPolymer.Controllers
                     if (user.IsPasswordMatch(userMatch))
                     {
                         FormsAuthentication.SetAuthCookie(user.Username, false);
-                        return RedirectToAction("Index", "Blogs", new { area = "Blogs" });
+                        return RedirectToAction("Index", "Articles");
                     }
                     else
                     {
@@ -54,6 +54,13 @@ namespace SmashNetworkPolymer.Controllers
             return View(user);
         }
 
+        public ActionResult Logout()
+        {
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
         public ActionResult Register()
         {
             return View();

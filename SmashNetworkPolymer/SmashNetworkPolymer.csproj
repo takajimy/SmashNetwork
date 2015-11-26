@@ -298,6 +298,9 @@
     <Content Include="Areas\Members\Views\Members\Index.cshtml" />
     <Content Include="Areas\Regions\Views\Regions\Index.cshtml" />
     <Content Include="Areas\Tournaments\Views\Tournaments\Index.cshtml" />
+    <Content Include="Areas\Debug\Views\Debug\Create.cshtml" />
+    <Content Include="Areas\Debug\Views\Debug\Edit.cshtml" />
+    <Content Include="Areas\Debug\Views\Debug\Delete.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="Images\test-background.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />

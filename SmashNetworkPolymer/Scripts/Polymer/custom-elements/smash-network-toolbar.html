@@ -20,6 +20,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../custom-elements/smash-network-get-button.html">
 <link rel="import" href="../paper-styles/default-theme.html">
 <link rel="import" href="../paper-styles/typography.html">
+<link rel="import" href="../paper-badge/paper-badge.html">
 
 <dom-module id="smash-network-toolbar">
     <template>
@@ -36,7 +37,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 text-transform: none;
             }
 
-            
+            paper-badge {
+                --paper-badge-opacity: 0.5;
+                --paper-badge-background: blue;
+            }
         </style>
 
         <paper-toolbar>
@@ -49,9 +53,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             </div>
             <div class="logged-in" hidden$="{{!isLoggedIn}}">
                 {{username}}
-                <paper-icon-button icon="social:notifications"></paper-icon-button>
+                <paper-icon-button id="notifications" icon="social:notifications"></paper-icon-button>
+                <paper-badge for="notifications" label="3"></paper-badge>
                 <paper-icon-button icon="icons:settings"></paper-icon-button>
-                <paper-icon-button icon="icons:account-circle"></paper-icon-button>
+                <smash-network-navigator-button to="Logout" link="/Home/Logout" icon="icons:account-circle"></smash-network-navigator-button>
             </div>
             <div class="more-options" hidden>
                 <paper-icon-button icon="more-vert" on-tap="moreAction"></paper-icon-button>
