@@ -302,6 +302,7 @@
     <Content Include="Areas\Develop\Views\Develop\Edit.cshtml" />
     <Content Include="Areas\Develop\Views\Develop\Delete.cshtml" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Images\shine.png" />
     <Content Include="Images\test-background.jpg" />
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />

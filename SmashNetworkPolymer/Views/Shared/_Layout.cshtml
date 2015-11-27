@@ -3,29 +3,71 @@
     <head>
         <meta charset="utf-8" />
         <title>@ViewBag.Title - My ASP.NET MVC Application</title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon">
         <meta name="viewport" content="width=device-width" />
+        @using System.Web.Mvc.Html;
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Styles.Render("~/Scripts/Polymer")
-        <link rel="import" href="~/Scripts/Polymer/core-icon/core-icon.html" />
+        <link rel="import" href="~/Scripts/Polymer/core-icon/core-icon.html">
         <link rel="import" href="~/Scripts/Polymer/iron-icons/iron-icons.html">
         <link rel="import" href="~/Scripts/Polymer/paper-drawer-panel/paper-drawer-panel.html">
         <link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
         <link rel="import" href="~/Scripts/Polymer/paper-button/paper-button.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-badge/paper-badge.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-scroll-header-panel/paper-scroll-header-panel.html">
         <link rel="import" href="~/Scripts/Polymer/iron-flex-layout/classes/iron-flex-layout.html">
         <link rel="import" href="~/Scripts/Polymer/iron-icons/social-icons.html">
         <link rel="import" href="~/Scripts/Polymer/paper-card/paper-card.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-styles/default-theme.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-styles/typography.html">
+        <link rel="import" href="~/Scripts/Polymer/paper-styles/paper-styles.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-drawer-contents.html">
         <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-get-button.html">
-        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-toolbar.html">
         @RenderSection("AdditionalImports", required: false)
         <style is="custom-style">
             paper-drawer-panel {
                 --paper-drawer-panel-left-drawer-container: {
                     color: #333;
+                    z-index: 10;
                 }
+            }
+
+            paper-scroll-header-panel {
+              position: absolute;
+              top: 0;
+              right: 0;
+              bottom: 0;
+              left: 0;
+              background-color: color: #fff;
+            }
+
+            paper-toolbar {
+              background-color: transparent;
+            }
+
+            paper-toolbar .title {
+              margin: 0 8px;
+            }
+
+            paper-scroll-header-panel .content {
+              padding: 8px;
+            }
+
+            paper-badge {
+                --paper-badge-opacity: 0.5;
+                --paper-badge-background: blue;
+            }
+
+            .my-title {
+                white-space: nowrap;
+            }
+
+            a {
+                color: #FFF;
+                text-decoration: none;
+                background-color: transparent;
             }
 
             @RenderSection("AdditionalStyles", required: false)
@@ -33,15 +75,29 @@
     </head>
     <body>
         <paper-drawer-panel force-narrow>
-            <div drawer>
+            <paper-header-panel drawer>
                 <smash-network-drawer-contents></smash-network-drawer-contents>
-            </div>
-            <div main>
-                <smash-network-toolbar title="@ViewBag.ToolbarTitle" is-logged-in="@Request.IsAuthenticated" username="@User.Identity.Name" link="/Home/Index">
+            </paper-header-panel>
+            <paper-scroll-header-panel main fixed>
+                <paper-toolbar>
                     <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
-                </smash-network-toolbar>
+                    <div class="flex my-title"><a href="/Home/Index">@ViewBag.ToolbarTitle</a></div>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <span>@User.Identity.Name</span>
+                        <paper-icon-button id="notifications" icon="social:notifications"></paper-icon-button>
+                        <paper-badge for="notifications" label="3"></paper-badge>
+                        <paper-icon-button icon="icons:settings"></paper-icon-button>
+                        <smash-network-navigator-button to="Logout" link="/Home/Logout" icon="icons:account-circle"></smash-network-navigator-button>
+                    }
+                    else
+                    {
+                        <smash-network-get-button link="/Home/Login">Sign In</smash-network-get-button>
+                    }
+                    <div hidden><paper-icon-button icon="more-vert"></paper-icon-button></div>
+                </paper-toolbar>
                 @RenderBody()
-            </div>
+            </paper-scroll-header-panel>
         </paper-drawer-panel>
         
         @Scripts.Render("~/bundles/jquery")
