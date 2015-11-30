@@ -1,0 +1,110 @@
+﻿@model SmashNetwork.Areas.Develop.Models.DataViewModel
+
+@{
+    ViewBag.ToolbarTitle = "Smash Network";
+    ViewBag.IsLoggedIn = true;
+    ViewBag.Username = "Takaji";
+    ViewBag.Title = "Home Page";
+}
+
+@section AdditionalImports {
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator-button.html">
+    <link rel="import" href="~/Scripts/Polymer/paper-dropdown-menu/paper-dropdown-menu.html">
+    <link rel="import" href="~/Scripts/Polymer/paper-listbox/paper-listbox.html">
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-post-form.html">
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-fab.html">
+    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-form-dropdown.html">
+    <link rel="import" href="~/Scripts/Polymer/iron-icons/editor-icons.html">
+}
+
+@section AdditionalStyles {
+    paper-card {
+        --paper-card-content: {
+            color: #333;
+        }
+        padding: 20px;
+        width: 80%;
+        overflow: auto;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+        color: #333;
+    }
+
+    th {
+        background-color: #333;
+        color: #FFF;
+    }
+
+    .container {
+        padding-top: 10px;
+        padding-left: 80px;
+        padding-bottom: 30px;
+    }
+
+    .item {
+        padding-bottom: 20px;
+    }
+
+    .navigate {
+        position: fixed;
+        z-index: 9;
+    }
+}
+<smash-network-navigator class="navigate"></smash-network-navigator>
+<div class="container vertical layout">
+    <div class="item">
+        <smash-network-post-form heading="View Data" link="/Develop/Index">
+            @Html.AntiForgeryToken()
+            <smash-network-form-dropdown label="Database Entity" variable="tableName">
+                <paper-item value="Users">Users</paper-item>
+                <paper-item value="Roles">Roles</paper-item>
+            </smash-network-form-dropdown>
+        </smash-network-post-form>
+    </div>
+    <div class="item">
+        <paper-card heading="Develop">
+            <div class="card-content">
+                @if (Model != null || Model.table != null)
+                {
+                    <table>
+                        <tr>
+                            @{int span = Model.table.Columns.Count + 1;}
+                            <th colspan="@span">@Model.tableName</th>
+                        </tr>
+                        <tr>
+                            @foreach (System.Data.DataColumn c in Model.table.Columns)
+                            {
+                                <th>@c.Caption</th>
+                            }
+                            <th nowrap>--Actions--</th>
+                        </tr>
+                        @foreach (System.Data.DataRow r in Model.table.Rows)
+                        {
+                            string currentId = "";
+                            <tr>
+                                @foreach (var v in r.ItemArray)
+                                {
+                                    if (v.Equals(r.ItemArray[0]))
+                                    {
+                                        currentId = v.ToString();
+                                    }
+                                    <td>@v.ToString()</td>
+                                }
+                                <td>
+                                    <smash-network-navigator-button to="Edit" link="/Develop/Edit?tableName=@Model.tableName&id=@currentId" icon="editor:mode-edit"></smash-network-navigator-button>
+                                    <smash-network-navigator-button to="Delete" link="/Develop/Delete?tableName=@Model.tableName&id=@currentId" icon="icons:delete"></smash-network-navigator-button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <paper-item>
+                        <div>Create new</div>
+                    </paper-item>
+                    <smash-network-fab icon="add" link="/Develop/Create?tableName=@Model.tableName"></smash-network-fab>
+                }
+            </div>
+        </paper-card>
+    </div>
+</div>
