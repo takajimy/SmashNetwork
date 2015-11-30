@@ -23,7 +23,8 @@
             color: #333;
         }
         padding: 20px;
-        max-width: 400px;
+        width: 80%;
+        overflow: auto;
     }
 
     table, td, th {
@@ -51,63 +52,59 @@
         z-index: 9;
     }
 }
-<div class="navigate">
-    <smash-network-navigator></smash-network-navigator>
-</div>
-<div class="horizontal layout">
-    <div class="vertical layout">
-        <div class="container">
-            <div class="item">
-                <smash-network-post-form heading="View Data" link="/Develop/Index">
-                    @Html.AntiForgeryToken()
-                    <smash-network-form-dropdown label="Database Entity" variable="tableName">
-                        <paper-item value="Users">Users</paper-item>
-                        <paper-item value="Roles">Roles</paper-item>
-                    </smash-network-form-dropdown>
-                </smash-network-post-form>
-            </div>
-            <div class="item">
-                <paper-card heading="Develop">
-                    @if (Model != null || Model.table != null)
-                    {
-                        <table>
-                            <tr>
-                                @{int span = Model.table.Columns.Count + 1;}
-                                <th colspan="@span">@Model.tableName</th>
-                            </tr>
-                            <tr>
-                                @foreach (System.Data.DataColumn c in Model.table.Columns)
-                                {
-                                    <th>@c.Caption</th>
-                                }
-                                <th nowrap>--Actions--</th>
-                            </tr>
-                            @foreach (System.Data.DataRow r in Model.table.Rows)
+<smash-network-navigator class="navigate"></smash-network-navigator>
+<div class="container vertical layout">
+    <div class="item">
+        <smash-network-post-form heading="View Data" link="/Develop/Index">
+            @Html.AntiForgeryToken()
+            <smash-network-form-dropdown label="Database Entity" variable="tableName">
+                <paper-item value="Users">Users</paper-item>
+                <paper-item value="Roles">Roles</paper-item>
+            </smash-network-form-dropdown>
+        </smash-network-post-form>
+    </div>
+    <div class="item">
+        <paper-card heading="Develop">
+            <div class="card-content">
+                @if (Model != null || Model.table != null)
+                {
+                    <table>
+                        <tr>
+                            @{int span = Model.table.Columns.Count + 1;}
+                            <th colspan="@span">@Model.tableName</th>
+                        </tr>
+                        <tr>
+                            @foreach (System.Data.DataColumn c in Model.table.Columns)
                             {
-                                string currentId = "";
-                                <tr>
-                                    @foreach (var v in r.ItemArray)
-                                    {
-                                        if (v.Equals(r.ItemArray[0]))
-                                        {
-                                            currentId = v.ToString();
-                                        }
-                                        <td>@v.ToString()</td>
-                                    }
-                                    <td>
-                                        <smash-network-navigator-button to="Edit" link="/Develop/Edit?tableName=@Model.tableName&id=@currentId" icon="editor:mode-edit"></smash-network-navigator-button>
-                                        <smash-network-navigator-button to="Delete" link="/Develop/Delete?tableName=@Model.tableName&id=@currentId" icon="icons:delete"></smash-network-navigator-button>
-                                    </td>
-                                </tr>
+                                <th>@c.Caption</th>
                             }
-                        </table>
-                        <paper-item>
-                            <div>Create new</div>
-                        </paper-item>
-                        <smash-network-fab icon="add" link="/Develop/Create?tableName=@Model.tableName"></smash-network-fab>
+                            <th nowrap>--Actions--</th>
+                        </tr>
+                        @foreach (System.Data.DataRow r in Model.table.Rows)
+                        {
+                            string currentId = "";
+                            <tr>
+                                @foreach (var v in r.ItemArray)
+                                {
+                                    if (v.Equals(r.ItemArray[0]))
+                                    {
+                                        currentId = v.ToString();
                                     }
-                </paper-card>
+                                    <td>@v.ToString()</td>
+                                }
+                                <td>
+                                    <smash-network-navigator-button to="Edit" link="/Develop/Edit?tableName=@Model.tableName&id=@currentId" icon="editor:mode-edit"></smash-network-navigator-button>
+                                    <smash-network-navigator-button to="Delete" link="/Develop/Delete?tableName=@Model.tableName&id=@currentId" icon="icons:delete"></smash-network-navigator-button>
+                                </td>
+                            </tr>
+                        }
+                    </table>
+                    <paper-item>
+                        <div>Create new</div>
+                    </paper-item>
+                    <smash-network-fab icon="add" link="/Develop/Create?tableName=@Model.tableName"></smash-network-fab>
+                }
             </div>
-        </div>
+        </paper-card>
     </div>
 </div>
