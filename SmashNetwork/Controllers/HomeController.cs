@@ -18,12 +18,14 @@ namespace SmashNetwork.Controllers
             return View();
         }
 
+        public ActionResult Denied()
+        {
+            ViewBag.Message = "Access denied.";
+            return RedirectToAction("Login");
+        }
+
         public ActionResult Login()
         {
-            if (TempData["message"] != null)
-            {
-                ViewBag.Message = TempData["message"].ToString();
-            }
             return View();
         }
 

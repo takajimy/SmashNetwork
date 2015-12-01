@@ -25,10 +25,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-navigator">
     <template>
         <style is="custom-style">
-            .paper-icon-button {
-                --paper-item-icon-width: 20px;
-            }
-
             .container {
                 padding-top: 10px;
                 padding-left: 16px;
@@ -48,22 +44,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <div class="container">
             <div class="list">
                 <div class="list-item">
-                    <smash-network-navigator-button to="Feed" link="/Feed" icon="hardware:cast-connected"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Feed" link="/Feed" color="red" icon="hardware:cast-connected"></smash-network-navigator-button>
                 </div>
                 <div class="list-item">
-                    <smash-network-navigator-button to="Regions" link="/Regions" icon="maps:place"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Regions" link="/Regions" color="green" icon="maps:place"></smash-network-navigator-button>
                 </div>
                 <div class="list-item">
-                    <smash-network-navigator-button to="Articles" link="/Articles" icon="editor:insert-drive-file"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Articles" link="/Articles" color="gray" icon="editor:insert-drive-file"></smash-network-navigator-button>
                 </div>
                 <div class="list-item">
-                    <smash-network-navigator-button to="Members" link="/Members" icon="social:people"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Members" link="/Members" color="yellow" icon="social:people"></smash-network-navigator-button>
                 </div>
                 <div class="list-item">
-                    <smash-network-navigator-button to="Tournaments" link="/Tournaments" icon="av:games"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Tournaments" link="/Tournaments" color="indigo" icon="av:games"></smash-network-navigator-button>
                 </div>
                 <div class="list-item">
-                    <smash-network-navigator-button to="Develop" link="/Develop" icon="social:whatshot"></smash-network-navigator-button>
+                    <smash-network-navigator-button to="Develop" link="/Develop" color="debug" icon="social:whatshot"></smash-network-navigator-button>
                 </div>
             </div>
     </template>

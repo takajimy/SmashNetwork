@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../paper-styles/paper-styles.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../paper-menu/paper-menu.html">
 <link rel="import" href="../paper-item/paper-icon-item.html">
 <link rel="import" href="../paper-item/paper-item.html">
 <link rel="import" href="../paper-item/paper-item-body.html">
@@ -27,15 +28,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <template>
         <style is="custom-style">
             .container {
-                padding-top: 10px;
+                padding-top: 12px;
                 padding-left: 16px;
-                padding-right: 16px;
+                padding-right: 46px;
                 padding-bottom: 10px;
-            }
-
-            .list {
-                @apply(--layout-vertical);
-                font-size: large;
             }
         </style>
 
@@ -44,26 +40,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </paper-toolbar>
 
         <div class="container">
-            <div class="list">
-                <smash-network-drawer-button link="/Feed" icon="hardware:cast-connected">
+            <paper-menu>
+                <smash-network-drawer-button link="/Feed" color="red" icon="hardware:cast-connected">
                     Feed
                 </smash-network-drawer-button>
-                <smash-network-drawer-button link="/Regions" icon="maps:place">
+                <smash-network-drawer-button link="/Regions" color="green" icon="maps:place">
                     Regions
                 </smash-network-drawer-button>
-                <smash-network-drawer-button link="/Articles" icon="editor:insert-drive-file">
+                <smash-network-drawer-button link="/Articles" color="gray" icon="editor:insert-drive-file">
                     Articles
                 </smash-network-drawer-button>
-                <smash-network-drawer-button link="/Members" icon="social:people">
+                <smash-network-drawer-button link="/Members" color="yellow" icon="social:people">
                     Members
                 </smash-network-drawer-button>
-                <smash-network-drawer-button link="/Tournaments" icon="av:games">
+                <smash-network-drawer-button link="/Tournaments" color="indigo" icon="av:games">
                     Tournaments
                 </smash-network-drawer-button>
-                <smash-network-drawer-button link="/Debug" icon="social:whatshot">
+                <smash-network-drawer-button link="/Develop" color="debug" icon="social:whatshot">
                     Debug
                 </smash-network-drawer-button>
-            </div>
+            </paper-menu>
         </div>
         
     </template>

@@ -21,16 +21,68 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-navigator-button">
     <template>
         <style is="custom-style">
-            .paper-icon-button {
-                --paper-item-icon-width: 20px;
+            paper-icon-button {
             }
+
+                paper-icon-button.green {
+                    color: #04B486;
+                }
+
+                paper-icon-button.red {
+                    color: #DF0101;
+                }
+
+                paper-icon-button.gray {
+                    color: #D8D8D8;
+                }
+
+                paper-icon-button.yellow {
+                    color: #FFFF00;
+                }
+
+                paper-icon-button.indigo {
+                    color: #642EFE;
+                }
+
+                paper-icon-button.debug {
+                    color: #6A0888;
+                }
+
+            paper-icon-button:hover {
+                opacity: 0.6;
+                border-radius: 50%;
+            }
+
+                paper-icon-button.green:hover {
+                    background: #B8DFD5;
+                }
+
+                paper-icon-button.red:hover {
+                    background: #DFB8B8;
+                }
+
+                paper-icon-button.gray:hover {
+                    background: #FFFFFF;
+                }
+
+                paper-icon-button.yellow:hover {
+                    background: #FBFBD6;
+                }
+
+                paper-icon-button.indigo:hover {
+                    background: #D2C1FF;
+                }
+
+                paper-icon-button.debug:hover {
+                    background: #D2AFDD;
+                }
         </style>
         
-        <paper-icon-button id="{{to}}" icon="{{icon}}" on-click="handleClick">
+        <paper-icon-button id="{{to}}" icon="{{icon}}" class$="{{color}}" on-click="handleClick">
             <content></content>
         </paper-icon-button>
         <paper-tooltip for="{{to}}" offset="0">{{to}}</paper-tooltip>
-</template>
+    </template>
 
     <script>
         Polymer({
@@ -39,7 +91,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 to: String,
                 link: String,
                 icon: String,
-                title: String
+                title: String,
+                color: String
             },
             handleClick: function() {
                 window.location.href = this.link;

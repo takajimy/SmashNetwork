@@ -21,18 +21,71 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <dom-module id="smash-network-drawer-button">
     <template>
         <style is="custom-style">
-            .paper-icon-item {
-                --paper-item-icon-width: 20px;
+            paper-icon-item {
+                width: 100%;
+                white-space: nowrap;
+                border-radius: 50%;
+                cursor: pointer;
             }
 
-            .iron-icon {
-                --paper-item-icon-width: 20px;
+            .text {
+                color: #000000;
+            }
+
+            paper-icon-item.green:hover {
+                color: #04B486;
+            }
+
+            paper-icon-item.red:hover {
+                color: #DF0101;
+            }
+
+            paper-icon-item.gray:hover {
+                color: #D8D8D8;
+            }
+
+            paper-icon-item.yellow:hover {
+                color: #FFFF00;
+            }
+
+            paper-icon-item.indigo:hover {
+                color: #642EFE;
+            }
+
+            paper-icon-item.debug:hover {
+                color: #6A0888;
+            }
+
+            iron-icon.green {
+                color: #04B486;
+            }
+
+            iron-icon.red {
+                color: #DF0101;
+            }
+
+            iron-icon.gray {
+                color: #D8D8D8;
+            }
+
+            iron-icon.yellow {
+                color: #FFFF00;
+            }
+
+            iron-icon.indigo {
+                color: #642EFE;
+            }
+
+            iron-icon.debug {
+                color: #6A0888;
             }
         </style>
 
-        <paper-icon-item on-click="handleClick">
-            <iron-icon icon="{{icon}}" item-icon></iron-icon>
-            <content></content>
+        <paper-icon-item class$="{{color}}" on-tap="handleClick">
+            <iron-icon icon="{{icon}}" class$="{{color}}" item-icon></iron-icon>
+            <div class="text">
+                <content></content>
+            </div>
         </paper-icon-item>
 </template>
 
@@ -41,7 +94,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             is: 'smash-network-drawer-button',
             properties: {
                 link: String,
-                icon: String
+                icon: String,
+                color: String
             },
             handleClick: function() {
                 window.location.href = this.link;
