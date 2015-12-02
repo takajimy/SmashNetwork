@@ -13,13 +13,7 @@ namespace SmashNetwork
 
             bundles.Add(new ScriptBundle("~/Scripts/Polymer").Include(
                         "~/Scripts/Polymer/webcomponentsjs/webcomponents.js",
-                        "~/Scripts/Polymer/polymer/polymer.html"
-                        /*"~/Scripts/Polymer/core-icon/core-icon.html",
-                        "~/Scripts/Polymer/core-icons/core-icons.html",
-                        "~/Scripts/Polymer/core-iconset/core-iconset.html",
-                        "~/Scripts/Polymer/paper-toolbar/paper-toolbar.html",
-                        "~/Scripts/Polymer/paper-icon-button/paper-icon-button.html"*/
-                        ));
+                        "~/Scripts/Polymer/polymer/polymer.html"));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryui").Include(
                         "~/Scripts/jquery-ui-{version}.js"));
