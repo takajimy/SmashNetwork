@@ -9,22 +9,22 @@
         @Styles.Render("~/Content/css")
         @Scripts.Render("~/bundles/modernizr")
         @Styles.Render("~/Scripts/Polymer")
-        <link rel="import" href="~/Scripts/Polymer/core-icon/core-icon.html">
-        <link rel="import" href="~/Scripts/Polymer/iron-icons/iron-icons.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-drawer-panel/paper-drawer-panel.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-icon-button/paper-icon-button.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-button/paper-button.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-badge/paper-badge.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-scroll-header-panel/paper-scroll-header-panel.html">
-        <link rel="import" href="~/Scripts/Polymer/iron-flex-layout/classes/iron-flex-layout.html">
-        <link rel="import" href="~/Scripts/Polymer/iron-icons/social-icons.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-card/paper-card.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-styles/default-theme.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-styles/typography.html">
-        <link rel="import" href="~/Scripts/Polymer/paper-styles/paper-styles.html">
-        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator.html">
-        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-drawer-contents.html">
-        <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-get-button.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/core-icon/core-icon.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/iron-icons/iron-icons.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-drawer-panel/paper-drawer-panel.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-icon-button/paper-icon-button.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-button/paper-button.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-badge/paper-badge.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-scroll-header-panel/paper-scroll-header-panel.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/iron-flex-layout/classes/iron-flex-layout.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/iron-icons/social-icons.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-card/paper-card.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-styles/default-theme.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-styles/typography.html">
+        <link rel="import" href="~/Scripts/Polymer/Native/paper-styles/paper-styles.html">
+        <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-navigator.html">
+        <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-drawer-button.html">
+        <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-get-button.html">
         @RenderSection("AdditionalImports", required: false)
         <style is="custom-style">
             paper-drawer-panel {
@@ -43,7 +43,7 @@
               background-color: color: #fff;
             }
 
-            paper-toolbar {
+            paper-toolbar.clear {
               background-color: transparent;
             }
 
@@ -70,16 +70,66 @@
                 background-color: transparent;
             }
 
+            .navigate {
+                position: fixed;
+                z-index: 9;
+            }
+
+            .container {
+                padding-top: 10px;
+                padding-left: 80px;
+                padding-bottom: 30px;
+            }
+
+            .item {
+                padding-bottom: 20px;
+            }
+
+            .drawer-content {
+                padding-top: 12px;
+                padding-left: 16px;
+                padding-right: 46px;
+                padding-bottom: 10px;
+            }
+
             @RenderSection("AdditionalStyles", required: false)
         </style>
     </head>
     <body>
         <paper-drawer-panel force-narrow>
             <paper-header-panel drawer>
-                <smash-network-drawer-contents></smash-network-drawer-contents>
+
+                <paper-toolbar class="drawer-toolbar">
+                    <h4>Smash Network</h4>
+                </paper-toolbar>
+
+                <div class="drawer-content">
+                    <paper-menu>
+                        <smash-network-drawer-button link="/Feed" color="red" icon="hardware:cast-connected">
+                            Feed
+                        </smash-network-drawer-button>
+                        <smash-network-drawer-button link="/Regions" color="green" icon="maps:place">
+                            Regions
+                        </smash-network-drawer-button>
+                        <smash-network-drawer-button link="/Articles" color="gray" icon="editor:insert-drive-file">
+                            Articles
+                        </smash-network-drawer-button>
+                        <smash-network-drawer-button link="/Members" color="yellow" icon="social:people">
+                            Members
+                        </smash-network-drawer-button>
+                        <smash-network-drawer-button link="/Tournaments" color="indigo" icon="av:games">
+                            Tournaments
+                        </smash-network-drawer-button>
+                        <smash-network-drawer-button link="/Develop" color="debug" icon="social:whatshot">
+                            Debug
+                        </smash-network-drawer-button>
+                    </paper-menu>
+                </div>
             </paper-header-panel>
+
             <paper-scroll-header-panel main fixed>
-                <paper-toolbar>
+
+                <paper-toolbar class="clear">
                     <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
                     <div class="flex my-title"><a href="/Home/Index">@ViewBag.ToolbarTitle</a></div>
                     @if (Request.IsAuthenticated)
@@ -96,7 +146,12 @@
                     }
                     <div hidden><paper-icon-button icon="more-vert"></paper-icon-button></div>
                 </paper-toolbar>
-                @RenderBody()
+                
+                <smash-network-navigator class="navigate"></smash-network-navigator>
+                
+                <div class="container vertical layout">
+                    @RenderBody()
+                </div>
             </paper-scroll-header-panel>
         </paper-drawer-panel>
         

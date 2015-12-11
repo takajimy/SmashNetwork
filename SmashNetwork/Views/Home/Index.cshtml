@@ -1,29 +1,45 @@
 ﻿@{
     ViewBag.ToolbarTitle = "Smash Network";
-    
+
     // These two are temporary -> Until login is fully configured
     ViewBag.IsLoggedIn = false;
     ViewBag.Username = "takaji";
 }
 
 @section AdditionalImports {
-    <link rel="import" href="~/Scripts/Polymer/paper-item/paper-item.html">   
-    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-fab.html">   
+    <link rel="import" href="~/Scripts/Polymer/Native/paper-item/paper-item.html">
+    <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-fab.html">
 }
 
 @section AdditionalStyles {
-    container: {
-        padding-top: 60px;
+    paper-card {
+        --paper-card-content: {
+            color: #333;
+        }
+        padding: 20px;
+        width: 80%;
+        overflow: auto;
+    }
+
+    table, td, th {
+        border: 1px solid black;
+        color: #333;
+    }
+
+    th {
+        background-color: #333;
+        color: #FFF;
+    }
+
+    .item {
+        padding-bottom: 20px;
     }
 }
 
-<div class="horizontal layout">
-    <smash-network-navigator></smash-network-navigator>
-    <div class="container">
-        <paper-item>
-            <div>Register?</div>
-        </paper-item>
-        <smash-network-fab icon="add" link="/Home/Register"></smash-network-fab>
-    </div>
+<div class="item">
+    <paper-item>
+        <div>Register?</div>
+    </paper-item>
+    <smash-network-fab icon="add" link="/Home/Register"></smash-network-fab>
 </div>
 

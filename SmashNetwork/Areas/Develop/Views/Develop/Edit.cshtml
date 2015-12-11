@@ -8,62 +8,46 @@
 }
 
 @section AdditionalImports {
-    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-navigator-button.html">
-    <link rel="import" href="~/Scripts/Polymer/paper-dropdown-menu/paper-dropdown-menu.html">
-    <link rel="import" href="~/Scripts/Polymer/paper-listbox/paper-listbox.html">
-    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-post-form.html">
-    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-fab.html">
-    <link rel="import" href="~/Scripts/Polymer/custom-elements/smash-network-form-dropdown.html">
-    <link rel="import" href="~/Scripts/Polymer/iron-icons/editor-icons.html">
+    <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-navigator-button.html">
+    <link rel="import" href="~/Scripts/Polymer/Native/paper-dropdown-menu/paper-dropdown-menu.html">
+    <link rel="import" href="~/Scripts/Polymer/Native/paper-listbox/paper-listbox.html">
+    <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-post-form.html">
+    <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-fab.html">
+    <link rel="import" href="~/Scripts/Polymer/Custom/smash-network-form-dropdown.html">
+    <link rel="import" href="~/Scripts/Polymer/Native/iron-icons/editor-icons.html">
 }
 
 @section AdditionalStyles {
     paper-card {
-    --paper-card-content: {
-    color: #333;
-    }
-    padding: 20px;
+        --paper-card-content: {
+            color: #333;
+        }
+        padding: 20px;
     }
 
     table, td, th {
-    border: 1px solid black;
-    color: #333;
+        border: 1px solid black;
+        color: #333;
     }
 
     th {
-    background-color: #333;
-    color: #FFF;
-    }
-
-    .container {
-    padding-bottom: 20px;
+        background-color: #333;
+        color: #FFF;
     }
 }
 
-<div class="horizontal layout">
-    <smash-network-navigator></smash-network-navigator>
-
-    <div class="flex">
-        <div class="vertical layout">
-            <div class="container">
-                @if (Model != null || Model.table != null)
-{
-    <smash-network-post-form heading="Edit @Model.tableName" link="/Develop/Edit?tableName=@Model.tableName&id=@Model.id">
-        @Html.AntiForgeryToken()
-        @{
-    // Assuming Rows[0] is the auto-incrementing ID, which we do not want to display
-    for (int i = 1; i < Model.table.Rows.Count; i++)
+<div class="item">
+    @if (Model != null || Model.table != null)
     {
-        <paper-input value="@Model.valuesTable.Rows[0].ItemArray[i]" id="@Model.table.Rows[i].ItemArray[0]" name="@Model.table.Rows[i].ItemArray[0]" label="@Model.table.Rows[i].ItemArray[0]" required></paper-input>
-    }
+        <smash-network-post-form heading="Edit @Model.tableName" link="/Develop/Edit?tableName=@Model.tableName&id=@Model.id">
+            @Html.AntiForgeryToken()
+            @{
+        // Assuming Rows[0] is the auto-incrementing ID, which we do not want to display
+        for (int i = 1; i < Model.table.Rows.Count; i++)
+        {
+            <paper-input value="@Model.valuesTable.Rows[0].ItemArray[i]" id="@Model.table.Rows[i].ItemArray[0]" name="@Model.table.Rows[i].ItemArray[0]" label="@Model.table.Rows[i].ItemArray[0]" required></paper-input>
         }
-    </smash-network-post-form>
-}
-            </div>
-        </div>
-    </div>
+            }
+        </smash-network-post-form>
+    }
 </div>
-
-<script>
-
-</script>

@@ -5,19 +5,21 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using SmashNetwork.Areas.Develop.Models;
+using SmashNetwork.DAL;
 
 namespace SmashNetwork.Areas.Develop.Controllers
 {
     public class DevelopController : Controller
     {
+        SmashNetworkDBContext db = new SmashNetworkDBContext();
+
         [Authorize]
         [HttpGet]
         public ActionResult Index()
         {
             DataViewModel model = new DataViewModel();
             model.tableName = "Users";
-            model.sqlParameters.tableName = model.tableName;
-            model.constructTableFromParameters();
+            model.table = db.getTableFromParameters(model.columnList, model.tableName);
 
             return View(model);
         }
@@ -29,8 +31,7 @@ namespace SmashNetwork.Areas.Develop.Controllers
         {
             if (ModelState.IsValid)
             {
-                model.sqlParameters.tableName = model.tableName;
-                model.constructTableFromParameters();
+                model.table = db.getTableFromParameters(model.columnList, model.tableName);
             }
 
             return View(model);
@@ -46,7 +47,7 @@ namespace SmashNetwork.Areas.Develop.Controllers
                                + "FROM information_schema.columns"
                                + " WHERE table_name = '" + tableName + "'";
 
-            model.constructTableFromStatement(statement);
+            model.table = db.getTableFromStatement(statement);
 
             return View(model);
         }
@@ -82,7 +83,7 @@ namespace SmashNetwork.Areas.Develop.Controllers
                 }
             }
             statement += ")";
-            model.executeStatement(statement);
+            db.executeStatement(statement);
 
             return View(model);
         }
@@ -97,10 +98,10 @@ namespace SmashNetwork.Areas.Develop.Controllers
             string statement = "SELECT column_name, data_type "
                                + "FROM information_schema.columns"
                                + " WHERE table_name = '" + tableName + "'";
-            model.constructTableFromStatement(statement);
+            model.table = db.getTableFromStatement(statement);
 
             statement = "SELECT * FROM " + tableName + " WHERE ID = " + id;
-            model.constructTableFromStatement(statement, Table.Values);
+            model.valuesTable = db.getTableFromStatement(statement);
 
             return View(model);
         }
@@ -126,7 +127,7 @@ namespace SmashNetwork.Areas.Develop.Controllers
                 }
             }
             statement += " WHERE ID = " + id;
-            model.executeStatement(statement);
+            db.executeStatement(statement);
 
             return View(model);
         }
@@ -141,10 +142,10 @@ namespace SmashNetwork.Areas.Develop.Controllers
             string statement = "SELECT column_name, data_type "
                                + "FROM information_schema.columns"
                                + " WHERE table_name = '" + tableName + "'";
-            model.constructTableFromStatement(statement);
+            model.table = db.getTableFromStatement(statement);
 
             statement = "SELECT * FROM " + tableName + " WHERE ID = " + id;
-            model.constructTableFromStatement(statement, Table.Values);
+            model.valuesTable = db.getTableFromStatement(statement);
 
             return View(model);
         }
@@ -158,7 +159,7 @@ namespace SmashNetwork.Areas.Develop.Controllers
             model.tableName = tableName;
             model.id = id;
             string statement = "DELETE FROM " + tableName + " WHERE ID = " + id;
-            model.executeStatement(statement);
+            db.executeStatement(statement);
 
             return View(model);
         }

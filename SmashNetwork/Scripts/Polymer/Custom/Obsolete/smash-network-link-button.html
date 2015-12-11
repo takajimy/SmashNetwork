@@ -7,18 +7,18 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../paper-styles/paper-styles.html">
-<link rel="import" href="../paper-button/paper-button.html">
-<link rel="import" href="../paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../paper-toolbar/paper-toolbar.html">
-<link rel="import" href="../paper-item/paper-icon-item.html">
-<link rel="import" href="../paper-item/paper-item.html">
-<link rel="import" href="../paper-item/paper-item-body.html">
-<link rel="import" href="../iron-icon/iron-icon.html">
-<link rel="import" href="../iron-icons/iron-icons.html">
-<link rel="import" href="../iron-flex-layout/classes/iron-flex-layout.html">
+<link rel="import" href="../Native/paper-styles/paper-styles.html">
+<link rel="import" href="../Native/paper-button/paper-button.html">
+<link rel="import" href="../Native/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../Native/paper-toolbar/paper-toolbar.html">
+<link rel="import" href="../Native/paper-item/paper-icon-item.html">
+<link rel="import" href="../Native/paper-item/paper-item.html">
+<link rel="import" href="../Native/paper-item/paper-item-body.html">
+<link rel="import" href="../Native/iron-icon/iron-icon.html">
+<link rel="import" href="../Native/iron-icons/iron-icons.html">
+<link rel="import" href="../Native/iron-flex-layout/classes/iron-flex-layout.html">
 
-<dom-module id="smash-network-get-button">
+<dom-module id="smash-network-link-button">
     <template>
         <style is="custom-style">
             paper-button {
@@ -32,16 +32,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
         
         <paper-button raised class="colorful" on-click="handleClick">
-            <content></content>
+            {{ text }}
         </paper-button>
 
     </template>
 
     <script>
         Polymer({
-            is: 'smash-network-get-button',
+            is: 'smash-network-link-button',
             properties: {
-                link: String
+                link: String,
+                text: String
             },
             handleClick: function() {
                 window.location.href = this.link;

@@ -1,0 +1,122 @@
+﻿<!--
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../Native/paper-styles/paper-styles.html">
+<link rel="import" href="../Native/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../Native/paper-item/paper-icon-item.html">
+<link rel="import" href="../Native/paper-item/paper-item.html">
+<link rel="import" href="../Native/paper-tooltip/paper-tooltip.html">
+<link rel="import" href="../Custom/smash-network-navigator-button.html">
+<link rel="import" href="../Native/iron-icon/iron-icon.html">
+<link rel="import" href="../Native/iron-icons/iron-icons.html">
+<link rel="import" href="../Native/iron-icons/maps-icons.html">
+<link rel="import" href="../Native/iron-icons/editor-icons.html">
+<link rel="import" href="../Native/iron-icons/social-icons.html">
+<link rel="import" href="../Native/iron-icons/hardware-icons.html">
+<link rel="import" href="../Native/iron-icons/av-icons.html">
+<link rel="import" href="../Native/iron-collapse/iron-collapse.html">
+<link rel="import" href="../Native/iron-resizable-behavior/iron-resizable-behavior.html">
+<link rel="import" href="../Native/iron-flex-layout/classes/iron-flex-layout.html">
+
+<dom-module id="smash-network-navigator">
+    <template>
+        <style is="custom-style">
+            .container {
+                padding-top: 10px;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-bottom: 10px;
+            }
+
+            .list {
+                @apply(--layout-vertical);
+                font-size: large;
+            }
+
+            .list-item {
+                padding-bottom: 10px;
+            }
+        </style>
+        <iron-collapse id="collapse">
+            <div class="container">
+                <div class="list">
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Feed" link="/Feed" color="red" icon="hardware:cast-connected"></smash-network-navigator-button>
+                    </div>
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Regions" link="/Regions" color="green" icon="maps:place"></smash-network-navigator-button>
+                    </div>
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Articles" link="/Articles" color="gray" icon="editor:insert-drive-file"></smash-network-navigator-button>
+                    </div>
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Members" link="/Members" color="yellow" icon="social:people"></smash-network-navigator-button>
+                    </div>
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Tournaments" link="/Tournaments" color="indigo" icon="av:games"></smash-network-navigator-button>
+                    </div>
+                    <div class="list-item">
+                        <smash-network-navigator-button to="Develop" link="/Develop" color="debug" icon="social:whatshot"></smash-network-navigator-button>
+                    </div>
+                </div>
+            </div>
+        </iron-collapse>
+        
+    </template>
+
+    <script>
+        Polymer({
+            is: "smash-network-navigator",
+
+            behaviors: [
+                Polymer.IronResizableBehavior
+            ],
+
+            properties: {
+                responsiveWidth: {
+                    type: Number,
+                    value: 500
+                }
+            },
+
+            listeners: {
+                'iron-resize': '_onIronResize'
+            },
+
+            get parent() {
+                if (this.parentNode.nodeType === Node.DOCUMENT_FRAGMENT_NODE) {
+                    return this.parentNode.host;
+                }
+                return this.parentNode;
+            },
+
+            ready: function() {
+                this.$.collapse.show();
+            },
+
+            _onIronResize: function () {
+                /*console.log(this.$.collapse.opened);
+                if (this.$.collapse.opened === true && this.parent.offsetWidth < this.responsiveWidth) {
+                    this.$.collapse.toggle();
+                }
+                else if (this.parent.offsetWidth > this.responsiveWidth) {
+                    this.$.collapse.toggle();
+                }*/
+                console.log(this.parent.offsetWidth);
+                console.log(this.responsiveWidth);
+                if (this.parent.offsetWidth < this.responsiveWidth) {
+                    this.$.collapse.hide();
+                }
+                else {
+                    this.$.collapse.show();
+                }
+            }
+        });
+    </script>
+</dom-module>
